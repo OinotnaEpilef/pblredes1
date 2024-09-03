@@ -1,6 +1,6 @@
 from socket import *
 
-host = gethostname()
+host = '172.16.112.1'
 port = 10000
 
 client = socket(AF_INET, SOCK_STREAM)
