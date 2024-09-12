@@ -1,7 +1,7 @@
 from socket import *
 
-host = '172.16.112.1'
-port = 10000
+host = '172.16.103.8'
+port = 2000
 
 print (f'HOST: {host}, PORT: {port}')
 server = socket(AF_INET, SOCK_STREAM)

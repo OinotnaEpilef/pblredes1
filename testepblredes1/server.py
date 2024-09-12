@@ -63,7 +63,7 @@ def handle_client(con, adr):
 
 def main():
     host = '172.16.103.8'
-    port = 10000
+    port = 2000
 
     server = socket(AF_INET, SOCK_STREAM)
     server.bind((host, port))
