@@ -62,7 +62,7 @@ def handle_client(con, adr):
     con.close()
 
 def main():
-    host = '172.16.112.1'
+    host = '172.16.103.8'
     port = 10000
 
     server = socket(AF_INET, SOCK_STREAM)
