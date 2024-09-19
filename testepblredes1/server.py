@@ -23,7 +23,8 @@ def gerar_rotas(cidades):
                     cidades_intermediarias = random.sample(cidades[:i] + cidades[i+1:], random.randint(1, 3))
                     caminho_cidades = [cidades[i]] + cidades_intermediarias + [cidades[j]]
                     for k in range(len(caminho_cidades) - 1):
-                        caminho.append((caminho_cidades[k], caminho_cidades[k+1], random.randint(2, 5)))
+                        #caminho.append((caminho_cidades[k], caminho_cidades[k+1], random.randint(2, 5)))
+                        caminho.append((caminho_cidades[k], caminho_cidades[k+1], 1))
                     rotas[rota_nome].append(caminho)
     return rotas
 
