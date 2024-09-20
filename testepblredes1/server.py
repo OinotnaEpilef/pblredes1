@@ -87,6 +87,7 @@ def handle_client(con, adr, rotas, trechos_comprados):
             enviar_mensagem(con, "Compra realizada com sucesso! Todos os trechos estão disponíveis e foram adquiridos.")
         else:
             enviar_mensagem(con, "Não foi possível realizar a compra. Um ou mais trechos não estão disponíveis ou não possuem passagens suficientes.")
+            
     
     con.close()
 
