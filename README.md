@@ -63,49 +63,93 @@ Diagrama de Arquitetura
 Um diagrama pode ser criado para ilustrar a interação entre o cliente e o servidor, destacando os fluxos de dados e as comunicações.
 
 +---------------------+                     +---------------------+
+
 |      Cliente        |                     |       Servidor      |
+
 +---------------------+                     +---------------------+
+
 |                     | <-----------------  |                     |
+
 | 1. Conecta ao       | 1. Conexão         |                     |
+
 |    servidor         |------------------->| 2. Aceita conexão   |
+
 |                     |                     |                     |
+
 |                     | <-----------------  |                     |
+
 | 3. Recebe mensagem  | 3. Mensagem:       |                     |
+
 |                     | "Bem-vindo ao      |                     |
+
 |                     |  sistema..."       |                     |
+
 |                     |                     |                     |
+
 |                     | <-----------------  |                     |
+
 | 4. Envia escolha    | 4. Mensagem:       |                     |
+
 |    da rota          | "Escolha uma rota" |                     |
+
 |                     |------------------->|                     |
+
 |                     |                     |                     |
+
 |                     | <-----------------  |                     |
+
 | 5. Recebe caminhos   | 5. Mensagem:       |                     |
+
 |    disponíveis      | "Caminhos disponíveis" |                  |
+
 |                     |------------------->|                     |
+
 |                     |                     |                     |
+
 |                     | <-----------------  |                     |
+
 | 6. Envia escolha    | 6. Mensagem:       |                     |
+
 |    do caminho       | "Verificando a     |                     |
+
 |                     |  disponibilidade"  |                     |
+
 |                     |------------------->|                     |
+
 |                     |                     |                     |
+
 |                     | <-----------------  |                     |
+
 | 7. Recebe resposta   | 7. Mensagem:       |                     |
+
 |    da compra        | "Compra realizada" |                     |
+
 |                     |------------------->|                     |
+
 |                     |                     |                     |
+
 |                     | <-----------------  |                     |
+
 | 8. Pergunta         | 8. Mensagem:       |                     |
+
 |    se deseja        | "Deseja realizar    |                     |
+
 |    nova compra      | outra compra?"     |                     |
+
 |                     |------------------->|                     |
+
 |                     |                     |                     |
+
 |                     | <-----------------  |                     |
+
 | 9. Recebe mensagem  | 9. Mensagem:       |                     |
+
 |                     | "Obrigado..."      |                     |
+
 |                     |------------------->|                     |
+
 |                     |                     |                     |
+
 +---------------------+                     +---------------------+
 
 3. Implementação
