@@ -71,8 +71,11 @@ A implementação do sistema para a compra de passagens aéreas via comunicaçã
 # Passo a passo para a execução do código
 1. Clone o repositório do github nas máquinas que utilizarão o servidor e os clientes
 2. Com o docker instalado, execute o código abaixo no terminal do linux:
-        cd testepblredes
-        docker build -f server.Dockerfile -t tcp_server .
-        docker run -p 10000:10000 --name tcp_server_container tcp_server
+    cd testepblredes
+
+    docker build -f server.Dockerfile -t tcp_server .
+
+    docker run -p 10000:10000 --name tcp_server_container tcp_server
+
 Isso, na máquina do servidor, iniciará o contêiner com o Docker, garantindo que a porta 10000 seja mapeada para o host.
 3. Execute o arquivo client.py pelo terminal do linux ou por alguma IDE em um número máximo pré-definido de computadores (4)
