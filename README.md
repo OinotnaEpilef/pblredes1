@@ -15,7 +15,7 @@ Um sistema distribuído consiste em vários componentes que se comunicam entre s
 
 Protocolo TCP/IP: TCP (Protocolo de Controle de Transmissão) é um protocolo orientado a conexão que garante transmissão confiável de dados. Ele segmenta as mensagens em pacotes e remonta esses pacotes no destino, garantindo que a comunicação não seja perdida. IP (Internet Protocol) é responsável por endereçar e rotear pacotes de dados na rede.
 
-Sockets: Um soquete é uma interface de programação que permite a comunicação entre processos, sejam eles locais ou distribuídos. Eles são amplamente utilizados no desenvolvimento de aplicações que requerem comunicação em rede, como servidores e clientes.
+Sockets: Um socket é uma interface de programação que permite a comunicação entre processos, sejam eles locais ou distribuídos. Eles são amplamente utilizados no desenvolvimento de aplicações que requerem comunicação em rede, como servidores e clientes.
 
 2. API (Interface de Programação de Aplicativo)
 
