@@ -69,10 +69,10 @@ Todos os testes foram satisfatórios, mostrando que o sistema funciona totalment
 A implementação do sistema para a compra de passagens aéreas via comunicação TCP/IP foi um sucesso, atingindo os objetivos buscados em termos de eficiência e praticidade para os usuários. A adoção de um modelo cliente-servidor possibilitou uma interação dinâmica entre os clientes e o servidor, enquanto a lógica de concorrência assegurou a integridade dos dados em situações de acesso simultâneo. Os testes realizados confirmaram a funcionalidade do sistema e sua capacidade de operar em um cenário com múltiplos usuários. A experiência adquirida ao longo do desenvolvimento ressaltou a relevância de um design sólido de APIs, além de enfatizar a importância de considerar a escalabilidade e a segurança, essenciais em sistemas que gerenciam transações financeiras. O sistema não apenas provou ser viável do ponto de vista técnico, mas também demonstrou um grande potencial para se adaptar às exigências do mercado de aviação de baixo custo, ajudando na democratização do transporte aéreo.
 
 # Passo a passo para a execução do código
-- 1. Clone o repositório do github nas máquinas que utilizarão o servidor e os clientes
-- 2. Com o docker instalado, execute o código abaixo no terminal do linux:
-    cd testepblredes
-    docker build -f server.Dockerfile -t tcp_server .
-    docker run -p 10000:10000 --name tcp_server_container tcp_server
+1. Clone o repositório do github nas máquinas que utilizarão o servidor e os clientes
+2. Com o docker instalado, execute o código abaixo no terminal do linux:
+        cd testepblredes
+        docker build -f server.Dockerfile -t tcp_server .
+        docker run -p 10000:10000 --name tcp_server_container tcp_server
 Isso, na máquina do servidor, iniciará o contêiner com o Docker, garantindo que a porta 10000 seja mapeada para o host.
-- 3. Execute o arquivo client.py pelo terminal do linux ou por alguma IDE em um número máximo pré-definido de computadores (4)
+3. Execute o arquivo client.py pelo terminal do linux ou por alguma IDE em um número máximo pré-definido de computadores (4)
