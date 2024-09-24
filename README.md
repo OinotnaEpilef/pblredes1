@@ -32,46 +32,14 @@ Locks: O uso de locks (bloqueios) é uma técnica comum para gerenciar o acesso 
 
 Durante esta fase inicial, os requisitos do sistema são reunidos e definidos com base nas necessidades da companhia aérea e do usuário final. Os principais requisitos identificados incluem:
 
-Recursos do sistema:
-
-1.Conferir rotas disponíveis.
-
-2.Escolher os segmentos e caminhos a percorrer.
-
-3.Verificar a disponibilidade de ingressos.
-
-4.Faça uma compra de ingresso.
-
-Requisitos de disponibilidade:
-
-1.Fornecer aos usuários uma interface amigável e intuitiva.
-
-2.Resposta rápida às solicitações dos clientes.
-
-3.Informações claras sobre rotas e ingressos.
+Recursos do sistema: conferir rotas disponíveis, escolher os segmentos e caminhos a percorrer, verificar a disponibilidade de ingressos, e fazer uma compra de ingresso. Requisitos de disponibilidade: fornecer aos usuários uma interface amigável e intuitiva, propor uma esposta rápida às solicitações dos clientes, e mostrar informações claras sobre rotas e ingressos.
 
 2. Análise da Arquitetura
 
-Com os requisitos definidos, a próxima etapa foi a elaboração da arquitetura do sistema. A arquitetura proposta é baseada em um modelo cliente-servidor, onde:
-
-Servidor: Responsável por gerenciar as rotas, interagir com os clientes e processar as compras de passagens.
-
-Cliente: Interface que permite ao usuário interagir com o servidor para consultar rotas e realizar compras.
+Com os requisitos definidos, a próxima etapa foi a elaboração da arquitetura do sistema. A arquitetura proposta é baseada em um modelo cliente-servidor, ondeo servidor é responsável por gerenciar as rotas, interagir com os clientes e processar as compras de passagens, e o cliente é a interface que permite ao usuário interagir com o servidor para consultar rotas e realizar compras.
 
 3. Implementação
 
-A implementação do sistema é realizada em Python, utilizando a biblioteca de sockets para comunicação entre cliente e servidor. As principais etapas de implementação incluem:
+A implementação do sistema é realizada em Python, utilizando a biblioteca de sockets para comunicação entre cliente e servidor. As principais etapas de implementação incluem o desenvolvimento de servidor, no qual foi criada uma lógica para gerar rotas e caminhos aleatórios entre cidades, lista rotas, verifica a disponibilidade e realiza a compra de passagens. Também foram utilizadas threads para gerenciar várias conexões de clientes simultaneamente para garantir que o servidor possa atender vários usuários ao mesmo tempo.
 
-Desenvolvimento de servidor:
-
-Criar uma lógica para gerar rotas e caminhos aleatórios entre cidades.
-
-Permite listar rotas, verificar a disponibilidade e compra de passagens.
-
-Usa threads para gerenciar várias conexões de clientes simultaneamente para garantir que o servidor possa atender vários usuários ao mesmo tempo.
-
-Desenvolvimento do cliente:
-
-Criar uma interface simples para interagir com o servidor.
-
-Implementar funções para receber mensagens do servidor e enviar respostas, como selecionar rotas e caminhos.
+Já no desenvolvimento do cliente, foi criada uma interface simples no terminal do python para interagir com o servidor e implementar as funções para receber mensagens do servidor e enviar respostas, como selecionar rotas e caminhos.
