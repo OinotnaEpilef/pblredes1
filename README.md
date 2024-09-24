@@ -50,7 +50,7 @@ Requisitos de disponibilidade:
 
 3.Informações claras sobre rotas e ingressos.
 
-2. Análise e Desenho da Arquitetura
+2. Análise da Arquitetura
 
 Com os requisitos definidos, a próxima etapa foi a elaboração da arquitetura do sistema. A arquitetura proposta é baseada em um modelo cliente-servidor, onde:
 
@@ -58,109 +58,20 @@ Servidor: Responsável por gerenciar as rotas, interagir com os clientes e proce
 
 Cliente: Interface que permite ao usuário interagir com o servidor para consultar rotas e realizar compras.
 
-Diagrama de Arquitetura
-
-Um diagrama pode ser criado para ilustrar a interação entre o cliente e o servidor, destacando os fluxos de dados e as comunicações.
-
-+---------------------+                     +---------------------+
-
-|      Cliente        |                     |       Servidor      |
-
-+---------------------+                     +---------------------+
-
-|                     | <-----------------  |                     |
-
-| 1. Conecta ao       | 1. Conexão         |                     |
-
-|    servidor         |------------------->| 2. Aceita conexão   |
-
-|                     |                     |                     |
-
-|                     | <-----------------  |                     |
-
-| 3. Recebe mensagem  | 3. Mensagem:       |                     |
-
-|                     | "Bem-vindo ao      |                     |
-
-|                     |  sistema..."       |                     |
-
-|                     |                     |                     |
-
-|                     | <-----------------  |                     |
-
-| 4. Envia escolha    | 4. Mensagem:       |                     |
-
-|    da rota          | "Escolha uma rota" |                     |
-
-|                     |------------------->|                     |
-
-|                     |                     |                     |
-
-|                     | <-----------------  |                     |
-
-| 5. Recebe caminhos   | 5. Mensagem:       |                     |
-
-|    disponíveis      | "Caminhos disponíveis" |                  |
-
-|                     |------------------->|                     |
-
-|                     |                     |                     |
-
-|                     | <-----------------  |                     |
-
-| 6. Envia escolha    | 6. Mensagem:       |                     |
-
-|    do caminho       | "Verificando a     |                     |
-
-|                     |  disponibilidade"  |                     |
-
-|                     |------------------->|                     |
-
-|                     |                     |                     |
-
-|                     | <-----------------  |                     |
-
-| 7. Recebe resposta   | 7. Mensagem:       |                     |
-
-|    da compra        | "Compra realizada" |                     |
-
-|                     |------------------->|                     |
-
-|                     |                     |                     |
-
-|                     | <-----------------  |                     |
-
-| 8. Pergunta         | 8. Mensagem:       |                     |
-
-|    se deseja        | "Deseja realizar    |                     |
-
-|    nova compra      | outra compra?"     |                     |
-
-|                     |------------------->|                     |
-
-|                     |                     |                     |
-
-|                     | <-----------------  |                     |
-
-| 9. Recebe mensagem  | 9. Mensagem:       |                     |
-
-|                     | "Obrigado..."      |                     |
-
-|                     |------------------->|                     |
-
-|                     |                     |                     |
-
-+---------------------+                     +---------------------+
-
 3. Implementação
 
 A implementação do sistema é realizada em Python, utilizando a biblioteca de sockets para comunicação entre cliente e servidor. As principais etapas de implementação incluem:
 
 Desenvolvimento de servidor:
+
 Criar uma lógica para gerar rotas e caminhos aleatórios entre cidades.
+
 Permite listar rotas, verificar a disponibilidade e compra de passagens.
+
 Usa threads para gerenciar várias conexões de clientes simultaneamente para garantir que o servidor possa atender vários usuários ao mesmo tempo.
 
 Desenvolvimento do cliente:
+
 Criar uma interface simples para interagir com o servidor.
+
 Implementar funções para receber mensagens do servidor e enviar respostas, como selecionar rotas e caminhos.
