@@ -73,9 +73,7 @@ A implementação do sistema para a compra de passagens aéreas via comunicaçã
 2. **Com o docker instalado, execute o código abaixo no terminal do linux:**
 ```bash
     cd testepblredes
-
     docker build -f server.Dockerfile -t tcp_server .
-
     docker run -p 10000:10000 --name tcp_server_container tcp_server
 ```
 Isso, na máquina do servidor, iniciará o contêiner com o Docker, garantindo que a porta 10000 seja mapeada para o host.
