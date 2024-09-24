@@ -5,6 +5,7 @@ UEFS - 23 de setembro de 2024
 
 email: felipetompsomf18@gmail.com
 # Resumo(Abstract):
+Este documento apresenta a criação de um sistema para a compra de passagens aéreas, elaborado com base na comunicação TCP/IP, como parte da disciplina de redes (TEC 502 - MI-Concorrência e Conectividade). O objetivo do sistema é oferecer uma experiência mais ágil para os usuários, permitindo que façam a escolha de rotas e realizem a aquisição de passagens de forma eficaz. A base teórica abrange conceitos sobre comunicação em sistemas distribuídos, APIs e controle de concorrência. Já a metodologia incluiu a definição de requisitos, análise da arquitetura cliente-servidor e implementação em Python, utilizando sockets e threads. Os resultados obtidos confirmaram que o sistema atende às especificações propostas, assegurando comunicação eficiente e integridade dos dados durante a concorrência. Testes funcionais, de concorrência e usabilidade validaram a eficácia do sistema, demonstrando sua viabilidade para o mercado de aviação de baixo custo.
 # Introdução: 
 A indústria da aviação mudou drasticamente nos últimos anos, com o surgimento de transportadoras de baixo custo (LCCs) democratizando o transporte aéreo. Estas empresas promovem o turismo e a conectividade global, tornando as viagens aéreas acessíveis a cada vez mais pessoas, oferecendo voos acessíveis. Este relatório descreve a implementação de um sistema de compra de passagens baseado em um servidor utilizando comunicação TCP/IP que foi solicitado aos alunos da disciplina do MI de redes (TEC 502 - MI-Concorrência e Conectividade), projetado para proporcionar uma experiência simplificada e eficiente aos clientes. O sistema permite que os usuários selecionem os segmentos de voo disponíveis, garantindo prioridade por ordem de chegada.
 # Fundamentação teórica
@@ -61,3 +62,8 @@ Após a implementação, a etapa de testes se mostrou crucial para assegurar o f
 
 **Testes de Usabilidade:**
 - Análise da interface do usuário, garantindo que fosse intuitiva e de fácil navegação, com a coleta de opiniões de usuários em potencial para realizar aprimoramentos.
+
+Todos os testes foram satisfatórios, mostrando que o sistema funciona totalmente
+
+# Conclusão
+A implementação do sistema para a compra de passagens aéreas via comunicação TCP/IP foi um sucesso, atingindo os objetivos buscados em termos de eficiência e praticidade para os usuários. A adoção de um modelo cliente-servidor possibilitou uma interação dinâmica entre os clientes e o servidor, enquanto a lógica de concorrência assegurou a integridade dos dados em situações de acesso simultâneo. Os testes realizados confirmaram a funcionalidade do sistema e sua capacidade de operar em um cenário com múltiplos usuários. A experiência adquirida ao longo do desenvolvimento ressaltou a relevância de um design sólido de APIs, além de enfatizar a importância de considerar a escalabilidade e a segurança, essenciais em sistemas que gerenciam transações financeiras. O sistema não apenas provou ser viável do ponto de vista técnico, mas também demonstrou um grande potencial para se adaptar às exigências do mercado de aviação de baixo custo, ajudando na democratização do transporte aéreo.
