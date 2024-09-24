@@ -28,3 +28,95 @@ Em aplicações que atendem a múltiplos usuários simultaneamente, como no caso
 
 Locks: O uso de locks (bloqueios) é uma técnica comum para gerenciar o acesso a recursos compartilhados. Em Python, o módulo threading fornece mecanismos para garantir que apenas um thread tenha acesso a uma seção crítica do código por vez, evitando problemas de inconsistência de dados.
 # Metodologia
+1. Definição de requisitos
+
+Durante esta fase inicial, os requisitos do sistema são reunidos e definidos com base nas necessidades da companhia aérea e do usuário final. Os principais requisitos identificados incluem:
+
+Recursos do sistema:
+
+1.Conferir rotas disponíveis.
+
+2.Escolher os segmentos e caminhos a percorrer.
+
+3.Verificar a disponibilidade de ingressos.
+
+4.Faça uma compra de ingresso.
+
+Requisitos de disponibilidade:
+
+1.Fornecer aos usuários uma interface amigável e intuitiva.
+
+2.Resposta rápida às solicitações dos clientes.
+
+3.Informações claras sobre rotas e ingressos.
+
+2. Análise e Desenho da Arquitetura
+
+Com os requisitos definidos, a próxima etapa foi a elaboração da arquitetura do sistema. A arquitetura proposta é baseada em um modelo cliente-servidor, onde:
+
+Servidor: Responsável por gerenciar as rotas, interagir com os clientes e processar as compras de passagens.
+
+Cliente: Interface que permite ao usuário interagir com o servidor para consultar rotas e realizar compras.
+
+Diagrama de Arquitetura
+
+Um diagrama pode ser criado para ilustrar a interação entre o cliente e o servidor, destacando os fluxos de dados e as comunicações.
+
++---------------------+                     +---------------------+
+|      Cliente        |                     |       Servidor      |
++---------------------+                     +---------------------+
+|                     | <-----------------  |                     |
+| 1. Conecta ao       | 1. Conexão         |                     |
+|    servidor         |------------------->| 2. Aceita conexão   |
+|                     |                     |                     |
+|                     | <-----------------  |                     |
+| 3. Recebe mensagem  | 3. Mensagem:       |                     |
+|                     | "Bem-vindo ao      |                     |
+|                     |  sistema..."       |                     |
+|                     |                     |                     |
+|                     | <-----------------  |                     |
+| 4. Envia escolha    | 4. Mensagem:       |                     |
+|    da rota          | "Escolha uma rota" |                     |
+|                     |------------------->|                     |
+|                     |                     |                     |
+|                     | <-----------------  |                     |
+| 5. Recebe caminhos   | 5. Mensagem:       |                     |
+|    disponíveis      | "Caminhos disponíveis" |                  |
+|                     |------------------->|                     |
+|                     |                     |                     |
+|                     | <-----------------  |                     |
+| 6. Envia escolha    | 6. Mensagem:       |                     |
+|    do caminho       | "Verificando a     |                     |
+|                     |  disponibilidade"  |                     |
+|                     |------------------->|                     |
+|                     |                     |                     |
+|                     | <-----------------  |                     |
+| 7. Recebe resposta   | 7. Mensagem:       |                     |
+|    da compra        | "Compra realizada" |                     |
+|                     |------------------->|                     |
+|                     |                     |                     |
+|                     | <-----------------  |                     |
+| 8. Pergunta         | 8. Mensagem:       |                     |
+|    se deseja        | "Deseja realizar    |                     |
+|    nova compra      | outra compra?"     |                     |
+|                     |------------------->|                     |
+|                     |                     |                     |
+|                     | <-----------------  |                     |
+| 9. Recebe mensagem  | 9. Mensagem:       |                     |
+|                     | "Obrigado..."      |                     |
+|                     |------------------->|                     |
+|                     |                     |                     |
++---------------------+                     +---------------------+
+
+3. Implementação
+
+A implementação do sistema é realizada em Python, utilizando a biblioteca de sockets para comunicação entre cliente e servidor. As principais etapas de implementação incluem:
+
+Desenvolvimento de servidor:
+Criar uma lógica para gerar rotas e caminhos aleatórios entre cidades.
+Permite listar rotas, verificar a disponibilidade e compra de passagens.
+Usa threads para gerenciar várias conexões de clientes simultaneamente para garantir que o servidor possa atender vários usuários ao mesmo tempo.
+
+Desenvolvimento do cliente:
+Criar uma interface simples para interagir com o servidor.
+Implementar funções para receber mensagens do servidor e enviar respostas, como selecionar rotas e caminhos.
