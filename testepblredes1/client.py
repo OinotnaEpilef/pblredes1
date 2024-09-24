@@ -1,7 +1,7 @@
 from socket import *
 
 def main():
-    host = '172.16.112.3'
+    host = '172.16.103.3'
     port = 10000
 
     client = socket(AF_INET, SOCK_STREAM)

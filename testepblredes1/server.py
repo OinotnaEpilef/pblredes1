@@ -85,7 +85,7 @@ def handle_client(con, adr, rotas):
                 enviar_mensagem(con, "Não foi possível realizar a compra. Um ou mais trechos não possuem passagens suficientes.")
         
         # Perguntar ao cliente se deseja realizar outra compra ou sair
-        enviar_mensagem(con, "Deseja realizar outra compra? (sim/não)")
+        enviar_mensagem(con, "Obrigado por usar o sistema de passagens. Até a próxima!")
         resposta = con.recv(1024).decode().strip().lower()
         if resposta != "sim":
             enviar_mensagem(con, "Obrigado por usar o sistema de passagens. Até a próxima!")
