@@ -79,4 +79,5 @@ A implementação do sistema para a compra de passagens aéreas via comunicaçã
     docker run -p 10000:10000 --name tcp_server_container tcp_server
 ```
 Isso, na máquina do servidor, iniciará o contêiner com o Docker, garantindo que a porta 10000 seja mapeada para o host.
+
 3. **Execute o arquivo client.py pelo terminal do linux ou por alguma IDE em um número máximo pré-definido de computadores (4)**
