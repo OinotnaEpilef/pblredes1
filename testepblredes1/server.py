@@ -23,14 +23,9 @@ def gerar_rotas(cidades):
                     cidades_intermediarias = random.sample(cidades[:i] + cidades[i+1:], random.randint(1, 3))
                     caminho_cidades = [cidades[i]] + cidades_intermediarias + [cidades[j]]
                     for k in range(len(caminho_cidades) - 1):
-                        #caminho.append((caminho_cidades[k], caminho_cidades[k+1], random.randint(2, 5)))
-                        caminho.append((caminho_cidades[k], caminho_cidades[k+1], 1))
+                        caminho.append((caminho_cidades[k], caminho_cidades[k+1], random.randint(2, 5)))  # Gerar passagens
                     rotas[rota_nome].append(caminho)
     return rotas
-
-# Função que inicializa as rotas e o status dos trechos
-def inicializar_trechos_comprados(rotas):
-    return {rota: [[False] * len(trechos) for trechos in caminhos] for rota, caminhos in rotas.items()}
 
 # Função para enviar mensagens ao cliente
 def enviar_mensagem(con, mensagem):
@@ -43,7 +38,7 @@ def listar_rotas(con, rotas):
         enviar_mensagem(con, f"{i+1}. {rota}")
     
     enviar_mensagem(con, "Escolha uma rota pelo número:")
-    rota_idx = int(con.recv(1024).decode()) - 1
+    rota_idx = int(con.recv(1024).decode().strip()) - 1
     return list(rotas.keys())[rota_idx]
 
 # Função para listar caminhos dentro de uma rota
@@ -57,47 +52,53 @@ def listar_caminhos(con, rota_escolhida, rotas):
             enviar_mensagem(con, f"   - {trecho[0]} -> {trecho[1]} com {trecho[2]} passagens disponíveis")
     
     enviar_mensagem(con, "Escolha um caminho pelo número:")
-    caminho_idx = int(con.recv(1024).decode()) - 1
+    caminho_idx = int(con.recv(1024).decode().strip()) - 1
     return rotas[rota_escolhida][caminho_idx], caminho_idx
 
 # Função para verificar disponibilidade dos trechos
-def verificar_disponibilidade(caminho, rota_escolhida, caminho_idx, trechos_comprados):
-    for i, trecho in enumerate(caminho):
-        if trechos_comprados[rota_escolhida][caminho_idx][i] or trecho[2] <= 0:
+def verificar_disponibilidade(caminho):
+    for trecho in caminho:
+        if trecho[2] <= 0:  # Sem passagens disponíveis
             return False
     return True
 
 # Função para realizar a compra de todos os trechos de uma rota
-def realizar_compra(caminho, rota_escolhida, caminho_idx, trechos_comprados):
+def realizar_compra(caminho):
     for i, trecho in enumerate(caminho):
-        caminho[i] = (trecho[0], trecho[1], trecho[2] - 1)
-        trechos_comprados[rota_escolhida][caminho_idx][i] = True
+        caminho[i] = (trecho[0], trecho[1], trecho[2] - 1)  # Decrementa o número de passagens
 
 # Função para lidar com um cliente
-def handle_client(con, adr, rotas, trechos_comprados):
+def handle_client(con, adr, rotas):
     enviar_mensagem(con, "Bem-vindo ao sistema de compra de passagens!")
-    rota_escolhida = listar_rotas(con, rotas)
-    caminho_escolhido, caminho_idx = listar_caminhos(con, rota_escolhida, rotas)
     
-    enviar_mensagem(con, "Verificando a disponibilidade dos trechos...")
-    
-    with lock:
-        if verificar_disponibilidade(caminho_escolhido, rota_escolhida, caminho_idx, trechos_comprados):
-            realizar_compra(caminho_escolhido, rota_escolhida, caminho_idx, trechos_comprados)
-            enviar_mensagem(con, "Compra realizada com sucesso! Todos os trechos estão disponíveis e foram adquiridos.")
-        else:
-            enviar_mensagem(con, "Não foi possível realizar a compra. Um ou mais trechos não estão disponíveis ou não possuem passagens suficientes.")
-            
-    
+    while True:
+        rota_escolhida = listar_rotas(con, rotas)
+        caminho_escolhido, caminho_idx = listar_caminhos(con, rota_escolhida, rotas)
+
+        enviar_mensagem(con, "Verificando a disponibilidade dos trechos...")
+
+        with lock:  # Bloquear para garantir consistência
+            if verificar_disponibilidade(caminho_escolhido):
+                realizar_compra(caminho_escolhido)
+                enviar_mensagem(con, "Compra realizada com sucesso! Todos os trechos foram adquiridos.")
+            else:
+                enviar_mensagem(con, "Não foi possível realizar a compra. Um ou mais trechos não possuem passagens suficientes.")
+        
+        # Perguntar ao cliente se deseja realizar outra compra ou sair
+        enviar_mensagem(con, "Deseja realizar outra compra? (sim/não)")
+        resposta = con.recv(1024).decode().strip().lower()
+        if resposta != "sim":
+            enviar_mensagem(con, "Obrigado por usar o sistema de passagens. Até a próxima!")
+            break
+
     con.close()
 
 # Função principal do servidor
 def main():
-    host = '172.16.112.3'  # Ou o IP do servidor
+    host = '0.0.0.0'  # Escuta em todas as interfaces
     port = 10000
 
     rotas = gerar_rotas(cidades)
-    trechos_comprados = inicializar_trechos_comprados(rotas)
     
     server = socket(AF_INET, SOCK_STREAM)
     server.bind((host, port))
@@ -106,7 +107,7 @@ def main():
 
     while True:
         con, adr = server.accept()
-        Thread(target=handle_client, args=(con, adr, rotas, trechos_comprados)).start()
+        Thread(target=handle_client, args=(con, adr, rotas)).start()
 
 if __name__ == "__main__":
     main()
