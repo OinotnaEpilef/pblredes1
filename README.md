@@ -47,3 +47,17 @@ Já no desenvolvimento do cliente, foi criada uma interface simples no terminal 
 O sistema implementado possibilitou uma comunicação eficiente entre os clientes e o servidor, permitindo a busca e compra de passagens aéreas de maneira prática e ágil. Durante os testes, observou-se que o uso de locks garantiu a integridade dos dados, prevenindo problemas de concorrência quando vários clientes tentavam adquirir passagens ao mesmo tempo. As funcionalidades desenvolvidas, como a listagem de rotas e a verificação de disponibilidade, corresponderam aos requisitos estabelecidos na fase inicial do projeto.
 
 Ademais, a experiência obtida durante o desenvolvimento do sistema sublinhou a relevância de um bom design de APIs, além da necessidade de levar em conta aspectos como escalabilidade e segurança em sistemas que operam com transações financeiras. A implementação do sistema evidenciou não apenas a viabilidade técnica da solução apresentada, mas também o potencial de crescimento e adaptação às demandas do setor de aviação de baixo custo.
+
+**Testes**
+
+Após a implementação, a etapa de testes se mostrou crucial para assegurar o funcionamento adequado do sistema e a conformidade com os requisitos estabelecidos. Os testes executados incluíram:
+
+**Testes Funcionais:**
+- Validação das funcionalidades relativas à consulta de rotas e à aquisição de passagens.
+- Verificação da lógica que conferia a disponibilidade de assentos, assegurando que a compra fosse impedida na ausência de lugares livres.
+
+**Testes de Concorrência:**
+- Simulação de vários usuários tentando efetuar compras ao mesmo tempo, para avaliar se o sistema conseguia gerenciar de forma correta o acesso a dados compartilhados, utilizando bloqueios para prevenir conflitos.
+
+**Testes de Usabilidade:**
+- Análise da interface do usuário, garantindo que fosse intuitiva e de fácil navegação, com a coleta de opiniões de usuários em potencial para realizar aprimoramentos.
