@@ -102,7 +102,7 @@ def main():
     
     server = socket(AF_INET, SOCK_STREAM)
     server.bind((host, port))
-    server.listen(5)
+    server.listen(6)
     print("Servidor de passagens aéreas rodando...")
 
     while True:
