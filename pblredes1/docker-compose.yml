@@ -10,6 +10,15 @@ services:
     networks:
       - rede_passagens
 
+  cliente:
+    build:
+      context: .
+      dockerfile: client.dockerfile
+    networks:
+      - rede_passagens
+    depends_on:
+      - servidor
+
 networks:
   rede_passagens:
     driver: bridge
