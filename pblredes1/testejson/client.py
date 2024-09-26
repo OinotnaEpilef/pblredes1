@@ -1,4 +1,4 @@
-from socket import *
+'''from socket import *
 import json
 
 # Função para enviar mensagem JSON ao servidor
@@ -54,3 +54,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''

@@ -1,3 +1,4 @@
+#arquivo cliente correto para o pbl
 from socket import *
 
 def main():

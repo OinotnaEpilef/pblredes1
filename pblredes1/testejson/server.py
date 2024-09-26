@@ -1,4 +1,4 @@
-from socket import *
+'''from socket import *
 from threading import Thread, Lock
 import random
 import json
@@ -123,3 +123,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''

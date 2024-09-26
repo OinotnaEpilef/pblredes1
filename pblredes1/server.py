@@ -1,3 +1,5 @@
+#arquivo servidor correto para o pbl
+
 from socket import *
 from threading import Thread, Lock
 import random
